@@ -83,7 +83,7 @@ namespace MeterReadingsUploader.UnitTests
 
         [Theory]
         [InlineData("04/05/2021 12:45")]
-        public void GivenValidDateTime_WhenValidate_ThenReturnsFalse(string? dateTime)
+        public void GivenValidDateTime_WhenValidate_ThenReturnsTrue(string? dateTime)
         {
             var meterReadingRow = new MeterReadingRow("1234", dateTime, "12345");
 
