@@ -1,11 +1,11 @@
 using CsvHelper;
-using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
-using System.Net.Mime;
 using MeterReadingsUploader.Database.Repositories;
 using MeterReadingsUploader.Domain;
 using MeterReadingsUploader.Models.ApiResponse;
 using MeterReadingsUploader.Models.CsvRecords;
+using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
+using System.Net.Mime;
 
 namespace MeterReadingsUploader.Controllers
 {
@@ -14,17 +14,10 @@ namespace MeterReadingsUploader.Controllers
     [Produces(MediaTypeNames.Application.Json)]
     public class MeterReadingUploadsController : ControllerBase
     {
-        private readonly ILogger<MeterReadingUploadsController> _logger;
-
-        public MeterReadingUploadsController(ILogger<MeterReadingUploadsController> logger)
-        {
-            _logger = logger;
-        }
-
         [HttpPost(Name = "meter-reading-uploads")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> Post(
-            [FromForm] IFormFile meterReadingCsvFile, 
+            IFormFile meterReadingCsvFile, 
             [FromServices]IMeterReadingsWriter writer,
             CancellationToken cancellationToken)
         {
